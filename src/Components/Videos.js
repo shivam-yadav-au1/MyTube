@@ -3,11 +3,7 @@ import { connect } from 'react-redux';
 import { store, stateMapper } from '../Store/Store.js';
 class VideosComponent extends React.Component {
 
-    componentDidMount() {
-        store.dispatch({
-            type: "FETCH_VIDEOS"
-        })
-    }
+ 
 
     renderVideos() {
         return (
