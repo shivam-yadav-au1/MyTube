@@ -19,8 +19,8 @@ class App extends React.Component {
                             </div>
 
                             <div className="col-md-9 ">
-                                <h1>myTube</h1>
-                                <hr />
+                                
+                               
                                 <Route path="/" exact={true} component={Trending}/>
                                 <Route path="/search"  component={Search}/>
                             </div>
