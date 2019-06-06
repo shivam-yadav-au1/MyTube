@@ -1,7 +1,7 @@
 function fetchVideos(store,videoType){
 
     fetch(" https://www.googleapis.com/youtube/v3/videos?"
-    +"part=snippet&key=AIzaSyAre3R_lOPoWUzpUxZOCmx5kPwoOT07Tco&chart=mostPopular")
+    +"part=snippet&key=AIzaSyAre3R_lOPoWUzpUxZOCmx5kPwoOT07Tco&chart=mostPopular&maxResults=30")
     .then(function(data){
         return data.json();
     })

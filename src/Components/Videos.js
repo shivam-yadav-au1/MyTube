@@ -15,7 +15,7 @@ class VideosComponent extends React.Component {
                 return (
 
 
-                    <div key={v.id} className="col-md-3">
+                    <div key={v.id} className="col-md-4">
                         <a target="_blank" href={`https://youtube.com/watch?v=${v.id}`}>
                             <img src={v.snippet.thumbnails.high.url} className="img-fluid" alt="..." />
                         </a>
