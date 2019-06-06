@@ -10,7 +10,7 @@ function videoReducers(videos=[],action){
 
     if(action.type ==="FETCH_VIDEOS"){
         // videos = ["video1","video2","video3","video4"];
-        fetchVideos(store,action.videoType);
+        fetchVideos(store,action);
         return videos;
     }
     if(action.type === "VIDEOS_LOADED"){
