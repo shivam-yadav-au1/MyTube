@@ -28,9 +28,10 @@ class SearchComponent extends React.Component {
         })
     }
 
-    componentDidMount() {
+
+    componentWillUnmount(){
         this.props.dispatch({
-            type: "CLEAR_VIDEOS"
+            type:'CLEAR_VIDEOS'
         })
     }
     render() {
