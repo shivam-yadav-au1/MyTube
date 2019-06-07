@@ -42,4 +42,24 @@ function fetchVideos(store, action) {
 
 }
 
-export { fetchVideos };
+function fetchOneVideo(store,action){
+    let url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=${action.videoId}&key=${MYTUBE_CONFIG.YOUTUBE_API_KEY}`
+
+    console.log("fetchOneVideo url ",url);
+   
+    fetch(url)
+    .then(function(response){
+        return response.json()
+    })
+    .then(function(data){
+        store.dispatch({
+            type:"VIDEO_DATA_LOADED",
+            videosData:data.items[0]
+        })
+        console.log(data)
+    })
+    .catch(function(err){
+        console.log("Error ===>"+err);
+    })
+}
+export { fetchVideos ,fetchOneVideo};
