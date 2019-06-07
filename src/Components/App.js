@@ -5,7 +5,8 @@ import Menu from "./Menu.js"
 import { Provider } from 'react-redux';
 import Trending from './Trending.js';
 import Search from './Search.js'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import VideoPlayer from '../Components/VideoPlayer.js'
 
 class App extends React.Component {
     render() {
@@ -23,6 +24,8 @@ class App extends React.Component {
                                
                                 <Route path="/" exact={true} component={Trending}/>
                                 <Route path="/search"  component={Search}/>
+                                <Route path="/player/:videoId"  component={VideoPlayer}/>
+
                             </div>
                         </div>
 
