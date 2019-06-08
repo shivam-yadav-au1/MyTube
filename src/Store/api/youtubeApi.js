@@ -45,7 +45,7 @@ function fetchVideos(store, action) {
 function fetchOneVideo(store,action){
     let url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=${action.videoId}&key=${MYTUBE_CONFIG.YOUTUBE_API_KEY}`
 
-    console.log("fetchOneVideo url ",url);
+    // console.log("fetchOneVideo url ",url);
    
     fetch(url)
     .then(function(response){
@@ -54,9 +54,9 @@ function fetchOneVideo(store,action){
     .then(function(data){
         store.dispatch({
             type:"VIDEO_DATA_LOADED",
-            videosData:data.items[0]
+            videoData:data.items[0]
         })
-        console.log(data)
+        // console.log(data)
     })
     .catch(function(err){
         console.log("Error ===>"+err);
