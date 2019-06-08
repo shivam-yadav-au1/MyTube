@@ -8,6 +8,9 @@ function currentVideoPlayerReducer(currentPlayerVideo={},action){
     if(action.type === "VIDEO_DATA_LOADED"){
         return action.videoData;
     }
+    if(action.type === "CLEAR_VIDEO_DATA"){
+        return currentPlayerVideo;
+    }
 
     return currentPlayerVideo;
 }
