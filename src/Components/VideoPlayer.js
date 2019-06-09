@@ -6,25 +6,59 @@ import { stateMapper } from '../Store/Store.js'
 
 class VideoPlayerComponent extends React.Component {
 
-    componentDidMount(){
-        this.props.dispatch({
-            type:"FETCH_VIDEO_DATA",
-            videoId:this.props.match.params.videoId
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            showMoreClicked: false
+        }
+        this.showMoreClicked = this.showMoreClicked.bind(this);
+    }
+
+    showMoreClicked() {
+
+        this.setState({
+            showMoreClicked: true
         })
     }
-    componentWillUnmount(){
+
+    componentDidMount() {
         this.props.dispatch({
-            type:'CLEAR_VIDEO_DATA'
+            type: "FETCH_VIDEO_DATA",
+            videoId: this.props.match.params.videoId
         })
     }
-    renderTitle(){
+    componentWillUnmount() {
+        this.props.dispatch({
+            type: 'CLEAR_VIDEO_DATA'
+        })
+    }
+    renderTitle() {
         //currentVideoPlayer.snippet.title
-        console.log("Title : "+this.props.currentVideoPlayer.snippet)
-        if(!this.props.currentVideoPlayer.snippet){
+        // console.log("Title : "+this.props.currentVideoPlayer.snippet)
+        if (!this.props.currentVideoPlayer.snippet) {
             return "Loding Title ...";
-        }else{
+        } else {
             return this.props.currentVideoPlayer.snippet.title
         }
+    }
+    renderDiscription() {
+
+        if (this.state.showMoreClicked) {
+            return (
+                <p>{this.props.currentVideoPlayer.snippet && this.props.currentVideoPlayer.snippet.description}</p>
+            )
+        } else {
+            return (
+                <p>
+                    {this.props.currentVideoPlayer.snippet && this.props.currentVideoPlayer.snippet.shortDescription}
+                    <button onClick={this.showMoreClicked} className="btn btn-sm btn-info">Show More</button>
+                </p>
+            )
+
+        }
+
+
     }
 
     render() {
@@ -40,8 +74,8 @@ class VideoPlayerComponent extends React.Component {
 
                 <div className="row">
                     <div className="col-md-10">
-                            <h2>
-                                Views:{this.props.currentVideoPlayer.statistics && this.props.currentVideoPlayer.statistics.viewCount},
+                        <h2>
+                            Views:{this.props.currentVideoPlayer.statistics && this.props.currentVideoPlayer.statistics.viewCount},
                                 Likes :{this.props.currentVideoPlayer.statistics && this.props.currentVideoPlayer.statistics.likeCount},
                                 DisLikes :{this.props.currentVideoPlayer.statistics && this.props.currentVideoPlayer.statistics.dislikeCount},
                             </h2>
@@ -49,7 +83,7 @@ class VideoPlayerComponent extends React.Component {
                 </div>
                 <div className="row">
                     <div className="col-md-8">
-                        {this.props.currentVideoPlayer.snippet && this.props.currentVideoPlayer.snippet.description}
+                        {this.renderDiscription()}
                     </div>
                 </div>
             </div>
