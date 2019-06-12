@@ -1,5 +1,6 @@
 import {fetchOneVideo} from '../api/youtubeApi.js'
 import {store} from '../Store.js'
+import {GoogleLogin} from 'react-google-login'
 function currentVideoPlayerReducer(currentPlayerVideo={},action){
 
     if(action.type === "FETCH_VIDEO_DATA"){

@@ -29,11 +29,13 @@ class VideoPlayerComponent extends React.Component {
             videoId: this.props.match.params.videoId
         })
     }
+
     componentWillUnmount() {
         this.props.dispatch({
             type: 'CLEAR_VIDEO_DATA'
         })
     }
+    
     renderTitle() {
         //currentVideoPlayer.snippet.title
         // console.log("Title : "+this.props.currentVideoPlayer.snippet)

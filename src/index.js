@@ -1,5 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './Components/App.js'
+import { BrowserRouter as Router,Route,Redirect } from 'react-router-dom';
+import Login from './Components/Login.js'
 
-ReactDOM.render(<App/>,document.getElementById("root"));
+class Home extends React.Component {
+
+    constructor(props){
+        super(props)
+
+        this.doRedirect = this.doRedirect.bind(this);
+    }
+
+    doRedirect(){
+        let loggedIn = localStorage.getItem("user");
+
+        if(loggedIn){
+            return(
+                <Redirect to="/app"/>
+            )
+        }else{
+            return (
+                <Redirect to="/login"/>
+            )
+        }
+        
+    }
+
+    render() {
+
+        return (
+            <Router>
+                <Route path="/app" component={App}/>
+                <Route path="/login" component={Login}/>
+                   {this.doRedirect()} 
+            </Router>
+        )
+
+    }
+}
+
+ReactDOM.render(<Home />, document.getElementById("root"));
