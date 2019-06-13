@@ -14,7 +14,7 @@ class App extends React.Component {
     render() {
         return (
             <Provider store={store}>
-                <Router>
+              
                     <div className="container">
                         <div className="row">
                             <div className="col-md-3">
@@ -33,7 +33,7 @@ class App extends React.Component {
                         </div>
 
                     </div>
-                </Router>
+              
             </Provider>
         )
     }
