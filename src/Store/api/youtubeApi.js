@@ -98,7 +98,8 @@ function fetchVideoComments(store, action) {
 function fetchPlayLists(store, action) {
     let url = `https://www.googleapis.com/youtube/v3/playlists?part=snippet&mine=true&maxResults=30`
 
-    //console.log(url)
+    console.log(url)
+    console.log("Token :"+getUserToken());
 
     fetch(url, {
         "headers": {

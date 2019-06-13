@@ -1,7 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {connect} from 'react-redux';
+import {stateMapper} from '../Store/Store.js'
 
-class Menu extends React.Component {
+class MenuComponent extends React.Component {
+
+    componentDidMount(){
+        this.props.dispatch({
+            type:"FETCH_PLAYLISTS"
+        })
+    }
+
     render() {
         return (
             <div >
@@ -15,6 +24,18 @@ class Menu extends React.Component {
                     <li className="list-group-item">
                         <Link to="/app/search">Search</Link>
                     </li>
+                    <li className="list-group-item">My PlayLists</li>
+                    {
+                        this.props.playList && this.props.playList.map(p=>{
+                            return (
+                                <li key={p.etag} className="list-group-item">
+                                      <Link to={`/app/playlist/${p.id}`}>{p.snippet.title}</Link>
+                                </li>
+                            )
+                        })
+                    }
+
+                    <li className="list-group-item">My Account</li>
                     <li className="list-group-item">
                         <Link to="/app/profile">Profile</Link>
                     </li>
@@ -28,5 +49,5 @@ class Menu extends React.Component {
         )
     }
 }
-
+let Menu = connect(stateMapper)(MenuComponent)
 export default Menu;
