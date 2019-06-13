@@ -8,6 +8,7 @@ import Search from './Search.js'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import VideoPlayer from '../Components/VideoPlayer.js'
 import Profile from '../Components/Profile.js'
+import Logout from '../Components/Logout.js'
 
 class App extends React.Component {
     render() {
@@ -27,6 +28,7 @@ class App extends React.Component {
                                 <Route path="/app/search"  component={Search}/>
                                 <Route path="/app/player/:videoId"  component={VideoPlayer}/>
                                 <Route path="/app/profile"  component={Profile}/>
+                                <Route path="/app/logout"  component={Logout}/>
                             </div>
                         </div>
 

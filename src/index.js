@@ -6,11 +6,7 @@ import Login from './Components/Login.js'
 
 class Home extends React.Component {
 
-    constructor(props){
-        super(props)
-
-        this.doRedirect = this.doRedirect.bind(this);
-    }
+   
 
     doRedirect(){
         let loggedIn = localStorage.getItem("user");
