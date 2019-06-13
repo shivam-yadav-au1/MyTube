@@ -30,10 +30,11 @@ class Login extends React.Component {
                         <h2 className="text-danger">Login Using Google</h2>
                         <hr />
                         <GoogleLogin
-                            clientId="627141934259-qb4d15h8ocifdvh80vg25p8o1qujlb1r.apps.googleusercontent.com"
+                            clientId="653860976414-vc6he8u19gahd3e5oshqinm263bk8jcp.apps.googleusercontent.com"
                             buttonText="Login"
                             onSuccess={this.responseGoogle}
                             onFailure={this.responseGoogle}
+                            scope="https://www.googleapis.com/auth/youtube"
                         />
                     </div>
                 </div>

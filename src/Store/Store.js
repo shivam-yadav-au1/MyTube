@@ -3,13 +3,13 @@ import videoReducers from './reducer/videoReducers.js'
 import isVideoLoadingReducers from './reducer/isVideoLoadingReducer.js'
 import currentVideoPlayerReducer from './reducer/currentVideoPlayerReducer.js';
 import currentVideoCommentsReducer from './reducer/currentVideoCommentsReducer';
-
+import playListReducer from './reducer/playListReducer.js';
 let reducer = combineReducers({
     videos:videoReducers,
     isVideoLoading:isVideoLoadingReducers,
     currentVideoPlayer:currentVideoPlayerReducer,
-    currentVideoComments:currentVideoCommentsReducer
-
+    currentVideoComments:currentVideoCommentsReducer,
+    playList:playListReducer
 })
 
 let store = createStore(reducer);
@@ -22,4 +22,7 @@ function stateMapper(state){
     return state;
 }
 
+store.dispatch({
+    type:"FETCH_PLAYLISTS"
+})
 export {store,stateMapper};
