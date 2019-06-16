@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import VideoPlayer from '../Components/VideoPlayer.js'
 import Profile from '../Components/Profile.js'
 import Logout from '../Components/Logout.js'
+import CreatePlayList from '../Components/CreatePlayList.js'
 
 class App extends React.Component {
     render() {
@@ -29,6 +30,7 @@ class App extends React.Component {
                                 <Route path="/app/player/:videoId"  component={VideoPlayer}/>
                                 <Route path="/app/profile"  component={Profile}/>
                                 <Route path="/app/logout"  component={Logout}/>
+                                <Route path="/app/playlists/create"  component={CreatePlayList}/>
                             </div>
                         </div>
 

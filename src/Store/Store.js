@@ -16,7 +16,7 @@ let reducer = combineReducers({
 let store = createStore(reducer);
 
 store.subscribe(()=>{
-    console.log("Dispatched ==>",store.getState());
+    //console.log("Dispatched ==>",store.getState());
 })
 
 function stateMapper(state){
