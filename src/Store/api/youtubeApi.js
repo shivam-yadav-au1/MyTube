@@ -98,8 +98,8 @@ function fetchVideoComments(store, action) {
 function fetchPlayLists(store, action) {
     let url = `https://www.googleapis.com/youtube/v3/playlists?part=snippet&mine=true&maxResults=30`
 
-    console.log(url)
-    console.log("Token :"+getUserToken());
+    // console.log(url)
+    // console.log("Token :"+getUserToken());
 
     fetch(url, {
         "headers": {
@@ -121,4 +121,43 @@ function fetchPlayLists(store, action) {
             console.log("Error ===>" + err);
         })
 }
-export { fetchVideos, fetchOneVideo, fetchVideoComments, fetchPlayLists };
+
+function createPlayList(store, action) {
+    let url = `https://www.googleapis.com/youtube/v3/playlists?part=snippet&key=${MYTUBE_CONFIG.YOUTUBE_API_KEY}`
+
+    let formData = {
+        "snippet": {
+            "title": action.formData.name,
+            "description": action.formData.description
+        }
+    };
+
+    fetch(url, {
+        "method": "POST",
+        "headers": {
+            Authorization: `Bearer ${getUserToken()}`,
+            "Content-Type": "application/json"
+        },
+        "body": JSON.stringify(formData)
+    })
+        .then(function (response) {
+            return response.json()
+        })
+        .then(function (data) {
+            console.log(data);
+            store.dispatch({
+                type: "PLAYLIST_CREATED",
+                newPlayList: data
+            })
+            store.dispatch({
+                type:"FETCH_PLAYLISTS"
+            })
+            
+        })
+        .catch(function (err) {
+            console.log("Error ===>" + err);
+        })
+}
+
+
+export { fetchVideos, fetchOneVideo, fetchVideoComments, fetchPlayLists, createPlayList };

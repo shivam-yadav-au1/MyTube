@@ -4,13 +4,15 @@ import isVideoLoadingReducers from './reducer/isVideoLoadingReducer.js'
 import currentVideoPlayerReducer from './reducer/currentVideoPlayerReducer.js';
 import currentVideoCommentsReducer from './reducer/currentVideoCommentsReducer';
 import playListReducer from './reducer/playListReducer.js';
+import newPlayListReducer from './reducer/newPlayListReducer.js'
 
 let reducer = combineReducers({
     videos:videoReducers,
     isVideoLoading:isVideoLoadingReducers,
     currentVideoPlayer:currentVideoPlayerReducer,
     currentVideoComments:currentVideoCommentsReducer,
-    playList:playListReducer
+    playList:playListReducer,
+    newPlayList:newPlayListReducer
 })
 
 let store = createStore(reducer);
